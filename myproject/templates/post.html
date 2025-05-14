@@ -1,0 +1,45 @@
+
+{% extends 'baseindex.html' %}
+
+{% block title %} Post {% endblock title %}
+
+{%  block post %}
+
+
+
+  
+
+    <h1>This is Post Page</h1>
+
+    <div id="posttable">
+
+        <table border="3">
+            <tr>
+                <td>
+                <div id="tilefield">
+                <h3>This is Title </h3>
+                </div>
+                
+                <div id="timefield">
+                <p>Post Uploaded {% now "D" %}</p>
+                </div>
+                
+
+                <div id="photofield">
+                <img src="" alt="image">
+                </div>
+
+                <div id="bodyfield">
+                    <p>This is body</p>
+                </div>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    
+    
+
+
+{% endblock post %}

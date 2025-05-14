@@ -1,0 +1,24 @@
+#footerpage{
+    background-color:azure;
+
+}
+
+ #nav {
+    background-color: #de6783;
+}
+
+table {
+    background-color: #2d94d4;
+    font-size:xx-large;
+    color: #de6783;
+    
+}
+
+a hover {
+    background-color:#c7c749;
+}
+
+a :active {
+   background-color:#024956; 
+}
+
