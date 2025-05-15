@@ -14,7 +14,7 @@
         }
 
         body {
-            background-color: rgb(100, 129, 137); border-radius;
+            background-color: #f0f4f8;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -26,7 +26,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -43,9 +43,9 @@
         #nav a {
             color: #1E88E5;
             text-decoration: none;
-            margin-left: 2rem;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
+            margin-left: 1rem;
+            font-size: 1rem;
+            padding: 0.4rem 1rem;
             border-radius: 25px;
             transition: all 0.3s ease;
             font-weight: 500;
@@ -57,37 +57,34 @@
             transform: translateY(-2px);
         }
 
-        #postpage {
-            flex: 1;
-            width: 100%;
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        .button-primary {
+            background-color: #1E88E5;
+            color: #FFD700 !important;
+            font-weight: 700;
+            border: none;
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
 
-        .post-container {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(30, 136, 229, 0.1);
-            border: 2px solid #FFD700;
+        .button-primary:hover {
+            background-color: #1565C0;
+            transform: scale(1.05);
         }
 
-        #userpage {
+        #postpage, #postdetail {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
         #footer {
-            background-color: rgb(11, 151, 190); border-radius;
+            background-color: #0b97be;
             color: #FFD700;
-            padding: 1.5rem;
-            margin-top: auto;
+            padding: 1.2rem;
             text-align: center;
-            font-weight: 500;
+            margin-top: auto;
         }
 
         .current-date {
@@ -99,40 +96,84 @@
             font-weight: 600;
         }
 
-        .button-primary {
-            background-color: #1E88E5;
-            color: #FFD700 !important;
-            font-weight: 700 !important;
-            border: none;
-            padding: 0.8rem 1.8rem !important;
-            border-radius: 25px;
-            transition: all 0.3s ease;
+        /* ======= POST TABLE STYLES ======= */
+
+        #posttable table {
+            width: 100%;
+            background-color: #fff;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            padding: 1rem;
         }
 
-        .button-primary:hover {
-            background-color: #1565C0 !important;
-            transform: scale(1.05);
+        #tilefield h3 {
+            background-color: #0b97be;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-bottom-right-radius: 30px;
+        }
+
+        #timefield p {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        #photofield {
+            margin: 1rem 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        #photofield img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 2px solid #ccc;
+        }
+
+        #bodyfield p {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
         }
 
         h1, h2, h3, h4 {
             color: #1E88E5;
-            margin-bottom: 1rem;
         }
 
         p {
             color: #424242;
-            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+            #photofield img {
+                width: 100%;
+                height: auto;
+            }
+
+            #nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #nav a {
+                margin: 0.5rem 0;
+            }
         }
     </style>
 </head>
-
 <body>
     <div id="nav">
         <h3>My Social App</h3>
         <div>
             <span class="current-date">{% now "D, d M Y" %}</span>
             <a href="{% url 'baseindex' %}">Home</a>
-            <a href="{% url 'post' %}">Posts</a> 
+            <a href="{% url 'post' %}">Posts</a>
             <a href="/admin/">Admin</a>
             <a href="{% url 'createnewpost' %}" class="button-primary">Create New Post</a>
         </div>
@@ -143,15 +184,15 @@
         {% endblock post %}
     </div>
 
-    <div id="userpage">
-        {% block user %}
-        {% endblock user %}
+    <div id="postdetail">
+        {% block postdetail %}
+        {% endblock postdetail %}
     </div>
 
     <div id="footer">
         {% include 'footer.html' %}
-        {% block footer%}
-        {% endblock footer%}
+        {% block footer %}
+        {% endblock footer %}
     </div>
 </body>
 </html>

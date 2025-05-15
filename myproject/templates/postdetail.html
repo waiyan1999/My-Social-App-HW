@@ -1,13 +1,16 @@
+
 {% extends 'baseindex.html' %}
 
-{% block title %} Post {% endblock title %}
 
-{% block post %}
-<!-- <h1>This is Post Page</h1> -->
+{% block title %} Post Details {% endblock title %}
 
-<div id="posttable">
-    {% for i in post_data %}
-    <table>
+{% block postdetail %}
+
+
+
+   {% for i in data %}
+
+ <table>
         <tr>
             <td>
                 <div id="tilefield">
@@ -33,12 +36,12 @@
             </td>
             
         </tr>
-        <tr><td><a href="{% url 'postdetail' i.id %}">see more</a></td></tr>
+    
         <tr>
             
         </tr>
-    </table>
-    <br>
+    </table>    
+
     {% endfor %}
-</div>
-{% endblock post %}
+
+{% endblock postdetail %}

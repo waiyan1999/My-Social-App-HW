@@ -13,11 +13,12 @@ def footer_view(request):
 def post_view(request):
     post_data = post.objects.all()
     context = {'post_data':post_data}
-    
     return render(request, 'post.html',context)
 
-def user_view(request):
-    return render(request,'user.html')
+def postdetail_view(request,id):
+    data = post.objects.filter(id=id)
+    context = {'data':data}
+    return render(request,'postdetail.html',context)
 
 
 
