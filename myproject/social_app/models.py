@@ -5,9 +5,14 @@ from django.db import models
 
 class post(models.Model):
     title = models.CharField()
-    photo = models.ImageField(upload_to='photo')
+    
+    photo1 = models.ImageField(upload_to='photo')
+    photo2 = models.ImageField(upload_to='photo',default="photo")
+    photo3 = models.ImageField(upload_to='photo', default="photo")
+    
     body = models.TextField()
-    time = models.TimeField()
+    
+    time = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.title

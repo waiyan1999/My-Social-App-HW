@@ -16,17 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from social_app.views import baseindex,footer,post,user
+from social_app.views import baseindex_view,footer_view,post_view,user_view,create_new_post,delete_post
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', baseindex , name = 'baseindex'),
-    path('footer/',footer, name = 'footer'),
-    path('post/', post, name = 'post'),
-    path('user/', user, name = 'user'),
+    path('', baseindex_view , name = 'baseindex'),
+    path('footer/',footer_view, name = 'footer'),
+    path('post/', post_view, name = 'post'),
+    path('user/', user_view, name = 'user'),
+    path('createnewpost/',create_new_post, name = 'createnewpost' ),
+    path('deletepost/<int:id>/',delete_post,name= 'deletepost')
     
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

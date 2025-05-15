@@ -11,6 +11,9 @@ table {
     background-color: #2d94d4;
     font-size:xx-large;
     color: #de6783;
+    border: 3px;
+    border-radius: 30;
+    max-width: max-content;
     
 }
 

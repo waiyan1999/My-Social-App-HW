@@ -9,34 +9,42 @@
 
   
 
-    <h1>This is Post Page</h1>
+    <!-- <h1>This is Post Page</h1>  -->
 
     <div id="posttable">
-
-        <table border="3">
+        {% for i in post_data %}
+        <table style="background-color: #FFD700; border-radius: 10px;">
             <tr>
                 <td>
                 <div id="tilefield">
-                <h3>This is Title </h3>
+                <h3 style="background-color: rgb(11, 151, 190); border-bottom-right-radius: 30px;
+                color: azure;"> {{ i.title }}</h3>
                 </div>
                 
                 <div id="timefield">
-                <p>Post Uploaded {% now "D" %}</p>
+                <p  >Post Uploaded {{ i.time }}  {{ i.time | timesince }} ago  </p> 
+                <p  > 
+                   <a href="{% url 'deletepost' i.id %}">Delete This Post</a>
+
+                </p> 
                 </div>
                 
 
-                <div id="photofield">
-                <img src="" alt="image">
+                <div id="photofield" style="background-color: #FFD700; ">
+
+                <img src=" {{ i.photo1.url }}" alt="image" width="200px" height="200px" style="border: 3px; border-radius: 30px;">
+                <img src=" {{ i.photo2.url }}" alt="image" width="200px" height="200px" style="border: 3px; border-radius: 30px;">
+                <img src=" {{ i.photo3.url }}" alt="image" width="200px" height="200px" style="border: 3px; border-radius: 30px;">
                 </div>
 
                 <div id="bodyfield">
-                    <p>This is body</p>
+                    <p> {{ i.body }}</p>
                 </div>
 
                 </td>
             </tr>
-        </table>
-
+        </table> <br> 
+        {% endfor %} 
     </div>
     
     

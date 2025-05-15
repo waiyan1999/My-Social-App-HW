@@ -1,15 +1,47 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from social_app.models import post
+from social_app.form import post_upload_form
 
 # Create your views here.
 
-def baseindex(request):
+def baseindex_view(request):
     return render(request,"baseindex.html")
 
-def footer(request):
+def footer_view(request):
     return render(request,'footer.html')
 
-def post(request):
-    return render(request, 'post.html')
+def post_view(request):
+    post_data = post.objects.all()
+    context = {'post_data':post_data}
+    
+    return render(request, 'post.html',context)
 
-def user(request):
+def user_view(request):
     return render(request,'user.html')
+
+
+
+
+def create_new_post(request):
+    form = post_upload_form()
+    
+    if request.method == 'POST':
+        form = post_upload_form(request.POST,request.FILES)
+        
+        if form.is_valid():
+            form.save()
+            print(" ! Successfully Saved !")
+        else:
+            print("Errors Occur")
+            
+        return redirect('post')
+    
+    else:
+        return render(request,"form.html",{'form':form})
+    
+    
+def delete_post(request,id):
+    detele_data = post.objects.filter(id=id)
+    detele_data.delete()
+    
+    return redirect('post')
